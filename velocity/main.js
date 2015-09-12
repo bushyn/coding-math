@@ -21,7 +21,7 @@ var canvas = document.querySelector('canvas'),
 while(numOfParticles--) {
     var p = particle.create(centerX, centerY, Math.random() * 1 + 1, Math.random() * Math.PI * 2);
     p.color = randomColor();
-    p.size = Math.random()*10 + 5;
+    p.size = Math.random()*20 + 10;
     particles[numOfParticles] = p;
 }
 
@@ -30,7 +30,7 @@ function render() {
     particles.forEach(function(p, i) {
         context.fillStyle = p.color;
         context.beginPath();
-        context.arc(p.position.x, p.position.y, p.size, 0, Math.PI*2 , false);
+        context.arc(p.position.x, p.position.y, p.size/2, 0, Math.PI*2 , false);
         context.fill();
         p.update();
         if (p.outside(-p.size, -p.size, width+p.size, height+p.size)) p.comeBack();
